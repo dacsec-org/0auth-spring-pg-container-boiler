@@ -1,0 +1,18 @@
+<!-- src/main/resources/templates/index.html
+"You can use this to create a login link in your application, rather than
+the default 0auth2 login. It also has the options for custom user profile
+addons" -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<body>
+<h1>Family Promise Services</h1>
+<h2>Index</h2>
+<p th:if="${#authentication.principal != 'anonymousUser'}">Hello, <span th:text="${#authentication.principal}">User</span>!</p>
+<p th:if="${#authentication.principal == 'anonymousUser'}">Hello, User!</p>
+<div sec:authorize="isAuthenticated()">
+    <img th:src="${profile.get('picture')}" th:attr="alt=${profile.get('name')}"/>
+    <h2 th:text="${profile.get('name')}"></h2>
+    <p th:text="${profile.get('email')}"></p>
+    <a th:href="@{/logout}">Log Out</a>
+</div>
+</body>
+</html>

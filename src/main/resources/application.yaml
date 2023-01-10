@@ -1,0 +1,20 @@
+# src/main/resources/application.yml
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          auth0:
+            # add your client id here
+            client-id: YOUR_CLIENT_ID
+            # add your client secret here
+            client-secret: YOUR_CLIENT_SECRET
+            scope:
+              - openid
+              - profile
+              - email
+        provider:
+          auth0:
+            # trailing slash is important!
+            issuer-uri: https://YOUR_DOMAIN/
+            # add your domain endpoint above
